@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130642",
+  "entityTableName": "transporter",
+  "fields": [
+    {
+      "fieldName": "orgId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transporterId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,INACTIVE"
+    }
+  ],
+  "name": "Transporter",
+  "relationships": [
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "transporter",
+      "relationshipName": "address",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "transporter",
+      "relationshipName": "invoice",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

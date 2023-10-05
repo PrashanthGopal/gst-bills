@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="invoiceItems">
+      <h2 data-cy="invoiceItemsDetailsHeading"><span jhiTranslate="gstBillsApp.invoiceItems.detail.title">Invoice Items</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ invoiceItems.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.orgId">Org Id</span></dt>
+        <dd>
+          <span>{{ invoiceItems.orgId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.invoiceItemsId">Invoice Items Id</span></dt>
+        <dd>
+          <span>{{ invoiceItems.invoiceItemsId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.quantity">Quantity</span></dt>
+        <dd>
+          <span>{{ invoiceItems.quantity }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.cgst">Cgst</span></dt>
+        <dd>
+          <span>{{ invoiceItems.cgst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.sgst">Sgst</span></dt>
+        <dd>
+          <span>{{ invoiceItems.sgst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.gst">Gst</span></dt>
+        <dd>
+          <span>{{ invoiceItems.gst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.totalAmount">Total Amount</span></dt>
+        <dd>
+          <span>{{ invoiceItems.totalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.products">Products</span></dt>
+        <dd>
+          <div *ngIf="invoiceItems.products">
+            <a [routerLink]="['/products', invoiceItems.products.id, 'view']">{{ invoiceItems.products.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoiceItems.invoice">Invoice</span></dt>
+        <dd>
+          <div *ngIf="invoiceItems.invoice">
+            <a [routerLink]="['/invoice', invoiceItems.invoice.id, 'view']">{{ invoiceItems.invoice.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/invoice-items', invoiceItems.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

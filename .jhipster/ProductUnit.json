@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130634",
+  "entityTableName": "product_unit",
+  "fields": [
+    {
+      "fieldName": "unitCodeId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unitCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unitCodeDescription",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ProductUnit",
+  "relationships": [
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "productUnit",
+      "relationshipName": "products",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

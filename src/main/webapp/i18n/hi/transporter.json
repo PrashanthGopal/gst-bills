@@ -1,0 +1,30 @@
+{
+  "gstBillsApp": {
+    "transporter": {
+      "home": {
+        "title": "Transporters",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Transporter बनाएँ",
+        "createOrEditLabel": "Transporter बनाएँ या संपादित करें",
+        "notFound": "No Transporters found"
+      },
+      "created": "एक नया Transporter [identifier: {{ param }}] तैयार है",
+      "updated": "एक Transporter [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Transporter [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Transporter [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Transporter"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "transporterId": "Transporter Id",
+      "name": "Name",
+      "phoneNumber": "Phone Number",
+      "status": "Status",
+      "address": "Address",
+      "invoice": "Invoice"
+    }
+  }
+}

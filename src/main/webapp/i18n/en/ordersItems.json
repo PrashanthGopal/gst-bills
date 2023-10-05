@@ -1,0 +1,32 @@
+{
+  "gstBillsApp": {
+    "ordersItems": {
+      "home": {
+        "title": "Orders Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Orders Items",
+        "createOrEditLabel": "Create or edit a Orders Items",
+        "notFound": "No Orders Items found"
+      },
+      "created": "A new Orders Items is created with identifier {{ param }}",
+      "updated": "A Orders Items is updated with identifier {{ param }}",
+      "deleted": "A Orders Items is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orders Items {{ id }}?"
+      },
+      "detail": {
+        "title": "Orders Items"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "orderItemsId": "Order Items Id",
+      "quantity": "Quantity",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "gst": "Gst",
+      "totalAmount": "Total Amount",
+      "products": "Products",
+      "orders": "Orders"
+    }
+  }
+}

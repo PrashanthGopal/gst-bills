@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130641",
+  "entityTableName": "org_user_role",
+  "fields": [
+    {
+      "fieldName": "roleId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orgId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "name": "OrgUserRole",
+  "relationships": [
+    {
+      "otherEntityName": "orgUsers",
+      "relationshipName": "userRole",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

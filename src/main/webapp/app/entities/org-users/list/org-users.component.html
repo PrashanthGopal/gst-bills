@@ -1,0 +1,170 @@
+<div>
+  <h2 id="page-heading" data-cy="OrgUsersHeading">
+    <span jhiTranslate="gstBillsApp.orgUsers.home.title">Org Users</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gstBillsApp.orgUsers.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-org-users"
+        [routerLink]="['/org-users/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gstBillsApp.orgUsers.home.createLabel"> Create a new Org Users </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="orgUsers?.length === 0">
+    <span jhiTranslate="gstBillsApp.orgUsers.home.notFound">No Org Users found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="orgUsers && orgUsers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="userId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.userId">User Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="userName">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.userName">User Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="password">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.password">Password</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createDate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.createDate">Create Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="updateDate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.updateDate">Update Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="profilePhoto">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.profilePhoto">Profile Photo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="emailId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.emailId">Email Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phoneNumber">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orgUsers.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.orgUsers.orgUsers">Org Users</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orgUsers of orgUsers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/org-users', orgUsers.id, 'view']">{{ orgUsers.id }}</a>
+          </td>
+          <td>{{ orgUsers.userId }}</td>
+          <td>{{ orgUsers.name }}</td>
+          <td>{{ orgUsers.userName }}</td>
+          <td>{{ orgUsers.password }}</td>
+          <td jhiTranslate="{{ 'gstBillsApp.Status.' + orgUsers.status }}">{{ orgUsers.status }}</td>
+          <td>{{ orgUsers.createDate | formatMediumDatetime }}</td>
+          <td>{{ orgUsers.updateDate | formatMediumDatetime }}</td>
+          <td>
+            <a
+              *ngIf="orgUsers.profilePhoto"
+              (click)="openFile(orgUsers.profilePhoto, orgUsers.profilePhotoContentType)"
+              jhiTranslate="entity.action.open"
+              >Open</a
+            >
+            <span *ngIf="orgUsers.profilePhoto">{{ orgUsers.profilePhotoContentType }}, {{ byteSize(orgUsers.profilePhoto) }}</span>
+          </td>
+          <td>{{ orgUsers.emailId }}</td>
+          <td>{{ orgUsers.phoneNumber }}</td>
+          <td>
+            <div *ngIf="orgUsers.orgUsers">
+              <a [routerLink]="['/organization', orgUsers.orgUsers.id, 'view']">{{ orgUsers.orgUsers.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/org-users', orgUsers.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/org-users', orgUsers.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(orgUsers)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

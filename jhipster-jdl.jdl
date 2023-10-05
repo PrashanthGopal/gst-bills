@@ -1,0 +1,174 @@
+entity Address {
+	orgId String
+    addressId String
+    address1 String
+    address2 String
+    pincode String
+}
+
+enum Status {
+    ACTIVE, INACTIVE
+}
+
+entity Organization {
+    orgId String
+    orgName String
+    legalOrgName String
+    pan String
+    gstin String
+    phoneNumber String 
+    emailId String
+    status Status
+    dateOfRegestation ZonedDateTime
+    dateOfDeRegestation ZonedDateTime
+    logo Blob
+}
+
+entity OrgUsers {
+    userId String
+    name String
+    userName String
+    password String
+    status Status
+    createDate ZonedDateTime
+    updateDate ZonedDateTime
+    profilePhoto Blob
+    emailId String
+    phoneNumber String
+}
+
+entity OrgUserRole {
+    roleId String
+    orgId String
+    name String
+}
+
+entity Invoice {
+    invoiceId String
+    supplierClientId String
+    buyerClientId String
+    invoiceItemsId String
+    shippingAddressId String
+    status InvoiceStatus
+    createDateTime ZonedDateTime
+    updateDateTime ZonedDateTime
+    createdBy String
+    updatedBy String
+    totalIgstRate String
+    totalCgstRate String
+    totalSgstRate String
+    totalTaxRate String
+    totalAssAmount String
+    totalNoItems String
+    grandTotal Double
+    distance Double
+    modeOfTransaction String
+    transType String
+    vehicleNo String
+}
+
+entity InvoiceItems {
+	orgId String
+    invoiceItemsId String
+    quantity Integer
+    cgst String
+    sgst String
+    gst String
+    totalAmount Double
+}
+
+entity Clients {
+    clientId String
+    name String
+    gstin String
+    status Status
+    emailId String
+    phoneNumber String
+}
+
+entity Products {
+    productId String
+    name String
+    description String
+    productHsnCode String
+    productTaxRate String
+    unitCodeId String
+    costPerQty Double
+    cgst String
+    sgst String 
+    igst String
+    totalTaxRate String
+}
+
+entity ProductUnit {
+    unitCodeId String
+    unitCode String
+    unitCodeDescription String
+}
+
+entity Transporter {
+    orgId String
+    transporterId String
+    name String
+    phoneNumber String
+    status Status
+}
+
+entity StateCode {
+    stateCodeId String
+    code String
+    name String
+}
+
+enum InvoiceStatus {
+    DRAFT, ISSUED, PAYMENT_NOT_RECEIVED, PAYMENT_RECEIVED, COMPLETED
+}
+
+entity Orders {
+    orderId String
+    title String
+    description String
+    status OrdersEnum
+    ordersItemsId String
+}
+
+entity OrdersItems {
+	orgId String
+    orderItemsId String
+    quantity Integer
+    cgst String
+    sgst String
+    gst String
+    totalAmount Double
+}
+
+enum OrdersEnum {
+    DRAFT, OPEN, IN_PROGRESS, CANCEL_CLOSE, COMPLETED 
+}
+
+relationship OneToOne {
+    Organization to Address
+    InvoiceItems to Products
+    OrdersItems to Products
+    Invoice to Transporter
+    Orders to Clients
+    Products to ProductUnit
+    Address to StateCode
+    Clients to Address
+    Transporter to Address
+    Invoice to Address
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+    Organization to Invoice{orgInvoices}
+    Organization to Orders{orgOrders}
+    Organization to OrgUsers{orgUsers}
+    Organization to Clients{orgClients}
+    Organization to Products{orgProducts}
+    OrgUsers to OrgUserRole{userRole}
+    Invoice to InvoiceItems{invoice}
+    Orders to OrdersItems{orders}
+    Clients to Invoice
+}
+

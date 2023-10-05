@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-clients-heading" data-cy="ClientsCreateUpdateHeading" jhiTranslate="gstBillsApp.clients.home.createOrEditLabel">
+        Create or edit a Clients
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.clientId" for="field_clientId">Client Id</label>
+          <input type="text" class="form-control" name="clientId" id="field_clientId" data-cy="clientId" formControlName="clientId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.gstin" for="field_gstin">Gstin</label>
+          <input type="text" class="form-control" name="gstin" id="field_gstin" data-cy="gstin" formControlName="gstin" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'gstBillsApp.Status.null' | translate }}</option>
+            <option *ngFor="let status of statusValues" [value]="status">{{ 'gstBillsApp.Status.' + status | translate }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.emailId" for="field_emailId">Email Id</label>
+          <input type="text" class="form-control" name="emailId" id="field_emailId" data-cy="emailId" formControlName="emailId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.address" for="field_address">Address</label>
+          <select
+            class="form-control"
+            id="field_address"
+            data-cy="address"
+            name="address"
+            formControlName="address"
+            [compareWith]="compareAddress"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="addressOption" *ngFor="let addressOption of addressesCollection">{{ addressOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.clients.orgClients" for="field_orgClients">Org Clients</label>
+          <select
+            class="form-control"
+            id="field_orgClients"
+            data-cy="orgClients"
+            name="orgClients"
+            formControlName="orgClients"
+            [compareWith]="compareOrganization"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="organizationOption" *ngFor="let organizationOption of organizationsSharedCollection">
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

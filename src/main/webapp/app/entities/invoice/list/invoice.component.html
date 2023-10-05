@@ -1,0 +1,272 @@
+<div>
+  <h2 id="page-heading" data-cy="InvoiceHeading">
+    <span jhiTranslate="gstBillsApp.invoice.home.title">Invoices</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gstBillsApp.invoice.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-invoice"
+        [routerLink]="['/invoice/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gstBillsApp.invoice.home.createLabel"> Create a new Invoice </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="invoices?.length === 0">
+    <span jhiTranslate="gstBillsApp.invoice.home.notFound">No Invoices found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="invoices && invoices.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="invoiceId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.invoiceId">Invoice Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="supplierClientId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.supplierClientId">Supplier Client Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="buyerClientId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.buyerClientId">Buyer Client Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="invoiceItemsId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.invoiceItemsId">Invoice Items Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="shippingAddressId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.shippingAddressId">Shipping Address Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createDateTime">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.createDateTime">Create Date Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="updateDateTime">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.updateDateTime">Update Date Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="updatedBy">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalIgstRate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.totalIgstRate">Total Igst Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalCgstRate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.totalCgstRate">Total Cgst Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalSgstRate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.totalSgstRate">Total Sgst Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalTaxRate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.totalTaxRate">Total Tax Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalAssAmount">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.totalAssAmount">Total Ass Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalNoItems">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.totalNoItems">Total No Items</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="grandTotal">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.grandTotal">Grand Total</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="distance">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.distance">Distance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modeOfTransaction">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.modeOfTransaction">Mode Of Transaction</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="transType">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.transType">Trans Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="vehicleNo">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.vehicleNo">Vehicle No</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="transporter.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.transporter">Transporter</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="address.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.address">Address</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orgInvoices.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.orgInvoices">Org Invoices</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="clients.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.invoice.clients">Clients</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoices; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/invoice', invoice.id, 'view']">{{ invoice.id }}</a>
+          </td>
+          <td>{{ invoice.invoiceId }}</td>
+          <td>{{ invoice.supplierClientId }}</td>
+          <td>{{ invoice.buyerClientId }}</td>
+          <td>{{ invoice.invoiceItemsId }}</td>
+          <td>{{ invoice.shippingAddressId }}</td>
+          <td jhiTranslate="{{ 'gstBillsApp.InvoiceStatus.' + invoice.status }}">{{ invoice.status }}</td>
+          <td>{{ invoice.createDateTime | formatMediumDatetime }}</td>
+          <td>{{ invoice.updateDateTime | formatMediumDatetime }}</td>
+          <td>{{ invoice.createdBy }}</td>
+          <td>{{ invoice.updatedBy }}</td>
+          <td>{{ invoice.totalIgstRate }}</td>
+          <td>{{ invoice.totalCgstRate }}</td>
+          <td>{{ invoice.totalSgstRate }}</td>
+          <td>{{ invoice.totalTaxRate }}</td>
+          <td>{{ invoice.totalAssAmount }}</td>
+          <td>{{ invoice.totalNoItems }}</td>
+          <td>{{ invoice.grandTotal }}</td>
+          <td>{{ invoice.distance }}</td>
+          <td>{{ invoice.modeOfTransaction }}</td>
+          <td>{{ invoice.transType }}</td>
+          <td>{{ invoice.vehicleNo }}</td>
+          <td>
+            <div *ngIf="invoice.transporter">
+              <a [routerLink]="['/transporter', invoice.transporter.id, 'view']">{{ invoice.transporter.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="invoice.address">
+              <a [routerLink]="['/address', invoice.address.id, 'view']">{{ invoice.address.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="invoice.orgInvoices">
+              <a [routerLink]="['/organization', invoice.orgInvoices.id, 'view']">{{ invoice.orgInvoices.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="invoice.clients">
+              <a [routerLink]="['/clients', invoice.clients.id, 'view']">{{ invoice.clients.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/invoice', invoice.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/invoice', invoice.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(invoice)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

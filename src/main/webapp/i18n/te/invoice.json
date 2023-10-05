@@ -1,0 +1,49 @@
+{
+  "gstBillsApp": {
+    "invoice": {
+      "home": {
+        "title": "Invoices",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త Invoice  సృష్టించండి",
+        "createOrEditLabel": "Invoice సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Invoices found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Invoice సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Invoice సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Invoice తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Invoice {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Invoice"
+      },
+      "id": "ID",
+      "invoiceId": "Invoice Id",
+      "supplierClientId": "Supplier Client Id",
+      "buyerClientId": "Buyer Client Id",
+      "invoiceItemsId": "Invoice Items Id",
+      "shippingAddressId": "Shipping Address Id",
+      "status": "Status",
+      "createDateTime": "Create Date Time",
+      "updateDateTime": "Update Date Time",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "totalIgstRate": "Total Igst Rate",
+      "totalCgstRate": "Total Cgst Rate",
+      "totalSgstRate": "Total Sgst Rate",
+      "totalTaxRate": "Total Tax Rate",
+      "totalAssAmount": "Total Ass Amount",
+      "totalNoItems": "Total No Items",
+      "grandTotal": "Grand Total",
+      "distance": "Distance",
+      "modeOfTransaction": "Mode Of Transaction",
+      "transType": "Trans Type",
+      "vehicleNo": "Vehicle No",
+      "transporter": "Transporter",
+      "address": "Address",
+      "invoiceItems": "Invoice Items",
+      "orgInvoices": "Org Invoices",
+      "clients": "Clients"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gstBillsApp": {
+    "ordersItems": {
+      "home": {
+        "title": "Orders Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Orders Items-ஐ உருவாக்கு",
+        "createOrEditLabel": "Orders Items -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Orders Items found"
+      },
+      "created": "Orders Items புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Orders Items மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Orders Items நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Orders Items {{ id }}?"
+      },
+      "detail": {
+        "title": "Orders Items"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "orderItemsId": "Order Items Id",
+      "quantity": "Quantity",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "gst": "Gst",
+      "totalAmount": "Total Amount",
+      "products": "Products",
+      "orders": "Orders"
+    }
+  }
+}

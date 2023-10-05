@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="products">
+      <h2 data-cy="productsDetailsHeading"><span jhiTranslate="gstBillsApp.products.detail.title">Products</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ products.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.productId">Product Id</span></dt>
+        <dd>
+          <span>{{ products.productId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.name">Name</span></dt>
+        <dd>
+          <span>{{ products.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.description">Description</span></dt>
+        <dd>
+          <span>{{ products.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.productHsnCode">Product Hsn Code</span></dt>
+        <dd>
+          <span>{{ products.productHsnCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.productTaxRate">Product Tax Rate</span></dt>
+        <dd>
+          <span>{{ products.productTaxRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.unitCodeId">Unit Code Id</span></dt>
+        <dd>
+          <span>{{ products.unitCodeId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.costPerQty">Cost Per Qty</span></dt>
+        <dd>
+          <span>{{ products.costPerQty }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.cgst">Cgst</span></dt>
+        <dd>
+          <span>{{ products.cgst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.sgst">Sgst</span></dt>
+        <dd>
+          <span>{{ products.sgst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.igst">Igst</span></dt>
+        <dd>
+          <span>{{ products.igst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.totalTaxRate">Total Tax Rate</span></dt>
+        <dd>
+          <span>{{ products.totalTaxRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.productUnit">Product Unit</span></dt>
+        <dd>
+          <div *ngIf="products.productUnit">
+            <a [routerLink]="['/product-unit', products.productUnit.id, 'view']">{{ products.productUnit.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.products.orgProducts">Org Products</span></dt>
+        <dd>
+          <div *ngIf="products.orgProducts">
+            <a [routerLink]="['/organization', products.orgProducts.id, 'view']">{{ products.orgProducts.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/products', products.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

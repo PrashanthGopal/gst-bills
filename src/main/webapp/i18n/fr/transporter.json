@@ -1,0 +1,30 @@
+{
+  "gstBillsApp": {
+    "transporter": {
+      "home": {
+        "title": "Transporters",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Transporter",
+        "createOrEditLabel": "Créer ou éditer un Transporter",
+        "notFound": "Aucun Transporter trouvé"
+      },
+      "created": "Un nouveau Transporter a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Transporter avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Transporter avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Transporter {{ id }} ?"
+      },
+      "detail": {
+        "title": "Transporter"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "transporterId": "Transporter Id",
+      "name": "Name",
+      "phoneNumber": "Phone Number",
+      "status": "Status",
+      "address": "Address",
+      "invoice": "Invoice"
+    }
+  }
+}

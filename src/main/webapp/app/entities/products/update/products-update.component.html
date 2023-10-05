@@ -1,0 +1,165 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-products-heading" data-cy="ProductsCreateUpdateHeading" jhiTranslate="gstBillsApp.products.home.createOrEditLabel">
+        Create or edit a Products
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.productId" for="field_productId">Product Id</label>
+          <input type="text" class="form-control" name="productId" id="field_productId" data-cy="productId" formControlName="productId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.productHsnCode" for="field_productHsnCode">Product Hsn Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productHsnCode"
+            id="field_productHsnCode"
+            data-cy="productHsnCode"
+            formControlName="productHsnCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.productTaxRate" for="field_productTaxRate">Product Tax Rate</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productTaxRate"
+            id="field_productTaxRate"
+            data-cy="productTaxRate"
+            formControlName="productTaxRate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.unitCodeId" for="field_unitCodeId">Unit Code Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="unitCodeId"
+            id="field_unitCodeId"
+            data-cy="unitCodeId"
+            formControlName="unitCodeId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.costPerQty" for="field_costPerQty">Cost Per Qty</label>
+          <input
+            type="number"
+            class="form-control"
+            name="costPerQty"
+            id="field_costPerQty"
+            data-cy="costPerQty"
+            formControlName="costPerQty"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.cgst" for="field_cgst">Cgst</label>
+          <input type="text" class="form-control" name="cgst" id="field_cgst" data-cy="cgst" formControlName="cgst" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.sgst" for="field_sgst">Sgst</label>
+          <input type="text" class="form-control" name="sgst" id="field_sgst" data-cy="sgst" formControlName="sgst" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.igst" for="field_igst">Igst</label>
+          <input type="text" class="form-control" name="igst" id="field_igst" data-cy="igst" formControlName="igst" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.totalTaxRate" for="field_totalTaxRate">Total Tax Rate</label>
+          <input
+            type="text"
+            class="form-control"
+            name="totalTaxRate"
+            id="field_totalTaxRate"
+            data-cy="totalTaxRate"
+            formControlName="totalTaxRate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.productUnit" for="field_productUnit">Product Unit</label>
+          <select
+            class="form-control"
+            id="field_productUnit"
+            data-cy="productUnit"
+            name="productUnit"
+            formControlName="productUnit"
+            [compareWith]="compareProductUnit"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="productUnitOption" *ngFor="let productUnitOption of productUnitsCollection">
+              {{ productUnitOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.products.orgProducts" for="field_orgProducts">Org Products</label>
+          <select
+            class="form-control"
+            id="field_orgProducts"
+            data-cy="orgProducts"
+            name="orgProducts"
+            formControlName="orgProducts"
+            [compareWith]="compareOrganization"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="organizationOption" *ngFor="let organizationOption of organizationsSharedCollection">
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

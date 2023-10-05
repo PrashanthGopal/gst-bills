@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ordersItems">
+      <h2 data-cy="ordersItemsDetailsHeading"><span jhiTranslate="gstBillsApp.ordersItems.detail.title">Orders Items</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ordersItems.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.orgId">Org Id</span></dt>
+        <dd>
+          <span>{{ ordersItems.orgId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.orderItemsId">Order Items Id</span></dt>
+        <dd>
+          <span>{{ ordersItems.orderItemsId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.quantity">Quantity</span></dt>
+        <dd>
+          <span>{{ ordersItems.quantity }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.cgst">Cgst</span></dt>
+        <dd>
+          <span>{{ ordersItems.cgst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.sgst">Sgst</span></dt>
+        <dd>
+          <span>{{ ordersItems.sgst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.gst">Gst</span></dt>
+        <dd>
+          <span>{{ ordersItems.gst }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.totalAmount">Total Amount</span></dt>
+        <dd>
+          <span>{{ ordersItems.totalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.products">Products</span></dt>
+        <dd>
+          <div *ngIf="ordersItems.products">
+            <a [routerLink]="['/products', ordersItems.products.id, 'view']">{{ ordersItems.products.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.ordersItems.orders">Orders</span></dt>
+        <dd>
+          <div *ngIf="ordersItems.orders">
+            <a [routerLink]="['/orders', ordersItems.orders.id, 'view']">{{ ordersItems.orders.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/orders-items', ordersItems.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

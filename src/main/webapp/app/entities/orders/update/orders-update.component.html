@@ -1,0 +1,110 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-orders-heading" data-cy="OrdersCreateUpdateHeading" jhiTranslate="gstBillsApp.orders.home.createOrEditLabel">
+        Create or edit a Orders
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.orderId" for="field_orderId">Order Id</label>
+          <input type="text" class="form-control" name="orderId" id="field_orderId" data-cy="orderId" formControlName="orderId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'gstBillsApp.OrdersEnum.null' | translate }}</option>
+            <option *ngFor="let ordersEnum of ordersEnumValues" [value]="ordersEnum">
+              {{ 'gstBillsApp.OrdersEnum.' + ordersEnum | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.ordersItemsId" for="field_ordersItemsId">Orders Items Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ordersItemsId"
+            id="field_ordersItemsId"
+            data-cy="ordersItemsId"
+            formControlName="ordersItemsId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.clients" for="field_clients">Clients</label>
+          <select
+            class="form-control"
+            id="field_clients"
+            data-cy="clients"
+            name="clients"
+            formControlName="clients"
+            [compareWith]="compareClients"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="clientsOption" *ngFor="let clientsOption of clientsCollection">{{ clientsOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.orders.orgOrders" for="field_orgOrders">Org Orders</label>
+          <select
+            class="form-control"
+            id="field_orgOrders"
+            data-cy="orgOrders"
+            name="orgOrders"
+            formControlName="orgOrders"
+            [compareWith]="compareOrganization"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="organizationOption" *ngFor="let organizationOption of organizationsSharedCollection">
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

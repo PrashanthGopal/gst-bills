@@ -1,0 +1,130 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130640",
+  "entityTableName": "invoice",
+  "fields": [
+    {
+      "fieldName": "invoiceId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "supplierClientId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "buyerClientId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "invoiceItemsId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "shippingAddressId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "InvoiceStatus",
+      "fieldValues": "DRAFT,ISSUED,PAYMENT_NOT_RECEIVED,PAYMENT_RECEIVED,COMPLETED"
+    },
+    {
+      "fieldName": "createDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "updateDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "updatedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalIgstRate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalCgstRate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalSgstRate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalTaxRate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalAssAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalNoItems",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "grandTotal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "distance",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "modeOfTransaction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleNo",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Invoice",
+  "relationships": [
+    {
+      "otherEntityName": "transporter",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "transporter",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "address",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "invoiceItems",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "invoiceItems",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organization",
+      "relationshipName": "orgInvoices",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "clients",
+      "otherEntityRelationshipName": "invoice",
+      "relationshipName": "clients",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

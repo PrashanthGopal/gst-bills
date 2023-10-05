@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orgUserRole">
+      <h2 data-cy="orgUserRoleDetailsHeading"><span jhiTranslate="gstBillsApp.orgUserRole.detail.title">Org User Role</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orgUserRole.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUserRole.roleId">Role Id</span></dt>
+        <dd>
+          <span>{{ orgUserRole.roleId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUserRole.orgId">Org Id</span></dt>
+        <dd>
+          <span>{{ orgUserRole.orgId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUserRole.name">Name</span></dt>
+        <dd>
+          <span>{{ orgUserRole.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUserRole.userRole">User Role</span></dt>
+        <dd>
+          <div *ngIf="orgUserRole.userRole">
+            <a [routerLink]="['/org-users', orgUserRole.userRole.id, 'view']">{{ orgUserRole.userRole.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/org-user-role', orgUserRole.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

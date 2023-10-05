@@ -1,0 +1,9 @@
+{
+  "gstBillsApp": {
+    "Status": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "INACTIVE": "INACTIVE"
+    }
+  }
+}

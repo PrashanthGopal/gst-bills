@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="clients">
+      <h2 data-cy="clientsDetailsHeading"><span jhiTranslate="gstBillsApp.clients.detail.title">Clients</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ clients.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.clientId">Client Id</span></dt>
+        <dd>
+          <span>{{ clients.clientId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.name">Name</span></dt>
+        <dd>
+          <span>{{ clients.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.gstin">Gstin</span></dt>
+        <dd>
+          <span>{{ clients.gstin }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gstBillsApp.Status.' + clients.status }}">{{ clients.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.emailId">Email Id</span></dt>
+        <dd>
+          <span>{{ clients.emailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ clients.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.address">Address</span></dt>
+        <dd>
+          <div *ngIf="clients.address">
+            <a [routerLink]="['/address', clients.address.id, 'view']">{{ clients.address.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.clients.orgClients">Org Clients</span></dt>
+        <dd>
+          <div *ngIf="clients.orgClients">
+            <a [routerLink]="['/organization', clients.orgClients.id, 'view']">{{ clients.orgClients.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/clients', clients.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "gstBillsApp": {
+    "products": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త Products  సృష్టించండి",
+        "createOrEditLabel": "Products సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Products found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Products సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Products సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Products తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Products {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Products"
+      },
+      "id": "ID",
+      "productId": "Product Id",
+      "name": "Name",
+      "description": "Description",
+      "productHsnCode": "Product Hsn Code",
+      "productTaxRate": "Product Tax Rate",
+      "unitCodeId": "Unit Code Id",
+      "costPerQty": "Cost Per Qty",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "igst": "Igst",
+      "totalTaxRate": "Total Tax Rate",
+      "productUnit": "Product Unit",
+      "invoiceItems": "Invoice Items",
+      "ordersItems": "Orders Items",
+      "orgProducts": "Org Products"
+    }
+  }
+}

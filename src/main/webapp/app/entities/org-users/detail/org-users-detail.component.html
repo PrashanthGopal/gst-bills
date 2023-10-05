@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orgUsers">
+      <h2 data-cy="orgUsersDetailsHeading"><span jhiTranslate="gstBillsApp.orgUsers.detail.title">Org Users</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orgUsers.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.userId">User Id</span></dt>
+        <dd>
+          <span>{{ orgUsers.userId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.name">Name</span></dt>
+        <dd>
+          <span>{{ orgUsers.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.userName">User Name</span></dt>
+        <dd>
+          <span>{{ orgUsers.userName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.password">Password</span></dt>
+        <dd>
+          <span>{{ orgUsers.password }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gstBillsApp.Status.' + orgUsers.status }}">{{ orgUsers.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.createDate">Create Date</span></dt>
+        <dd>
+          <span>{{ orgUsers.createDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.updateDate">Update Date</span></dt>
+        <dd>
+          <span>{{ orgUsers.updateDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.profilePhoto">Profile Photo</span></dt>
+        <dd>
+          <div *ngIf="orgUsers.profilePhoto">
+            <a (click)="openFile(orgUsers.profilePhoto, orgUsers.profilePhotoContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ orgUsers.profilePhotoContentType }}, {{ byteSize(orgUsers.profilePhoto) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.emailId">Email Id</span></dt>
+        <dd>
+          <span>{{ orgUsers.emailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ orgUsers.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.orgUsers.orgUsers">Org Users</span></dt>
+        <dd>
+          <div *ngIf="orgUsers.orgUsers">
+            <a [routerLink]="['/organization', orgUsers.orgUsers.id, 'view']">{{ orgUsers.orgUsers.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/org-users', orgUsers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

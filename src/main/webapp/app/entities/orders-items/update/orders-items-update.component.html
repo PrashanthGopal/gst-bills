@@ -1,0 +1,117 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-orders-items-heading"
+        data-cy="OrdersItemsCreateUpdateHeading"
+        jhiTranslate="gstBillsApp.ordersItems.home.createOrEditLabel"
+      >
+        Create or edit a Orders Items
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.orgId" for="field_orgId">Org Id</label>
+          <input type="text" class="form-control" name="orgId" id="field_orgId" data-cy="orgId" formControlName="orgId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.orderItemsId" for="field_orderItemsId">Order Items Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="orderItemsId"
+            id="field_orderItemsId"
+            data-cy="orderItemsId"
+            formControlName="orderItemsId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.quantity" for="field_quantity">Quantity</label>
+          <input type="number" class="form-control" name="quantity" id="field_quantity" data-cy="quantity" formControlName="quantity" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.cgst" for="field_cgst">Cgst</label>
+          <input type="text" class="form-control" name="cgst" id="field_cgst" data-cy="cgst" formControlName="cgst" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.sgst" for="field_sgst">Sgst</label>
+          <input type="text" class="form-control" name="sgst" id="field_sgst" data-cy="sgst" formControlName="sgst" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.gst" for="field_gst">Gst</label>
+          <input type="text" class="form-control" name="gst" id="field_gst" data-cy="gst" formControlName="gst" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.totalAmount" for="field_totalAmount">Total Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalAmount"
+            id="field_totalAmount"
+            data-cy="totalAmount"
+            formControlName="totalAmount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.products" for="field_products">Products</label>
+          <select
+            class="form-control"
+            id="field_products"
+            data-cy="products"
+            name="products"
+            formControlName="products"
+            [compareWith]="compareProducts"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="productsOption" *ngFor="let productsOption of productsCollection">{{ productsOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.ordersItems.orders" for="field_orders">Orders</label>
+          <select
+            class="form-control"
+            id="field_orders"
+            data-cy="orders"
+            name="orders"
+            formControlName="orders"
+            [compareWith]="compareOrders"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ordersOption" *ngFor="let ordersOption of ordersSharedCollection">{{ ordersOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

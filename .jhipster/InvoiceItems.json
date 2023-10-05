@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130632",
+  "entityTableName": "invoice_items",
+  "fields": [
+    {
+      "fieldName": "orgId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "invoiceItemsId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cgst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sgst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "InvoiceItems",
+  "relationships": [
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "invoiceItems",
+      "relationshipName": "products",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "invoice",
+      "relationshipName": "invoice",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

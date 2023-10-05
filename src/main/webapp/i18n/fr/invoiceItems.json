@@ -1,0 +1,32 @@
+{
+  "gstBillsApp": {
+    "invoiceItems": {
+      "home": {
+        "title": "InvoiceItems",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Invoice Items",
+        "createOrEditLabel": "Créer ou éditer un Invoice Items",
+        "notFound": "Aucun Invoice Items trouvé"
+      },
+      "created": "Un nouveau Invoice Items a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Invoice Items avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Invoice Items avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Invoice Items {{ id }} ?"
+      },
+      "detail": {
+        "title": "Invoice Items"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "invoiceItemsId": "Invoice Items Id",
+      "quantity": "Quantity",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "gst": "Gst",
+      "totalAmount": "Total Amount",
+      "products": "Products",
+      "invoice": "Invoice"
+    }
+  }
+}

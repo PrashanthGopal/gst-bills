@@ -1,0 +1,32 @@
+{
+  "gstBillsApp": {
+    "ordersItems": {
+      "home": {
+        "title": "Orders Items",
+        "refreshListLabel": "ਸੂਚੀ ਤਾਜ਼ਾ ਕਰੋ",
+        "createLabel": "ਇੱਕ ਨਵਾਂ Orders Items ਬਣਾਓ",
+        "createOrEditLabel": "ਇੱਕ Orders Items ਬਣਾਓ ਜਾਂ ਸੰਪਾਦਿਤ ਕਰੋ",
+        "notFound": "ਕੋਈ Orders Items ਨਹੀਂ ਮਿਲਿਆ"
+      },
+      "created": "ਇੱਕ ਨਵਾਂ Orders Items ਪਛਾਣਕਰਤਾ {{ param }} ਨਾਲ ਬਣਾਇਆ ਗਿਆ ਹੈ",
+      "updated": "ਇੱਕ Orders Items ਪਛਾਣਕਰਤਾ {{ param }} ਨਾਲ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ",
+      "deleted": "ਇੱਕ Orders Items ਪਛਾਣਕਰਤਾ {{ param }} ਨਾਲ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ",
+      "delete": {
+        "question": "ਕੀ ਤੁਸੀਂ ਨਿਸ਼ਚਤ ਰੂਪ ਤੋਂ Orders Items {{ id }} ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+      },
+      "detail": {
+        "title": "Orders Items"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "orderItemsId": "Order Items Id",
+      "quantity": "Quantity",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "gst": "Gst",
+      "totalAmount": "Total Amount",
+      "products": "Products",
+      "orders": "Orders"
+    }
+  }
+}

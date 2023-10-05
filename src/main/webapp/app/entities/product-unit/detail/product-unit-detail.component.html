@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productUnit">
+      <h2 data-cy="productUnitDetailsHeading"><span jhiTranslate="gstBillsApp.productUnit.detail.title">Product Unit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ productUnit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.productUnit.unitCodeId">Unit Code Id</span></dt>
+        <dd>
+          <span>{{ productUnit.unitCodeId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.productUnit.unitCode">Unit Code</span></dt>
+        <dd>
+          <span>{{ productUnit.unitCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.productUnit.unitCodeDescription">Unit Code Description</span></dt>
+        <dd>
+          <span>{{ productUnit.unitCodeDescription }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product-unit', productUnit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

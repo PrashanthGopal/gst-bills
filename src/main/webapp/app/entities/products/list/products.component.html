@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductsHeading">
+    <span jhiTranslate="gstBillsApp.products.home.title">Products</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gstBillsApp.products.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-products"
+        [routerLink]="['/products/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gstBillsApp.products.home.createLabel"> Create a new Products </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="products?.length === 0">
+    <span jhiTranslate="gstBillsApp.products.home.notFound">No Products found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="products && products.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="productId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.productId">Product Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="productHsnCode">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.productHsnCode">Product Hsn Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="productTaxRate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.productTaxRate">Product Tax Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="unitCodeId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.unitCodeId">Unit Code Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="costPerQty">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.costPerQty">Cost Per Qty</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cgst">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.cgst">Cgst</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sgst">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.sgst">Sgst</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="igst">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.igst">Igst</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalTaxRate">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.totalTaxRate">Total Tax Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="productUnit.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.productUnit">Product Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orgProducts.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.products.orgProducts">Org Products</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let products of products; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/products', products.id, 'view']">{{ products.id }}</a>
+          </td>
+          <td>{{ products.productId }}</td>
+          <td>{{ products.name }}</td>
+          <td>{{ products.description }}</td>
+          <td>{{ products.productHsnCode }}</td>
+          <td>{{ products.productTaxRate }}</td>
+          <td>{{ products.unitCodeId }}</td>
+          <td>{{ products.costPerQty }}</td>
+          <td>{{ products.cgst }}</td>
+          <td>{{ products.sgst }}</td>
+          <td>{{ products.igst }}</td>
+          <td>{{ products.totalTaxRate }}</td>
+          <td>
+            <div *ngIf="products.productUnit">
+              <a [routerLink]="['/product-unit', products.productUnit.id, 'view']">{{ products.productUnit.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="products.orgProducts">
+              <a [routerLink]="['/organization', products.orgProducts.id, 'view']">{{ products.orgProducts.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/products', products.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/products', products.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(products)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

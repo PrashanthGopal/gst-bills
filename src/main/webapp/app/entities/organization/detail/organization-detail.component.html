@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="organization">
+      <h2 data-cy="organizationDetailsHeading"><span jhiTranslate="gstBillsApp.organization.detail.title">Organization</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ organization.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.orgId">Org Id</span></dt>
+        <dd>
+          <span>{{ organization.orgId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.orgName">Org Name</span></dt>
+        <dd>
+          <span>{{ organization.orgName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.legalOrgName">Legal Org Name</span></dt>
+        <dd>
+          <span>{{ organization.legalOrgName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.pan">Pan</span></dt>
+        <dd>
+          <span>{{ organization.pan }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.gstin">Gstin</span></dt>
+        <dd>
+          <span>{{ organization.gstin }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ organization.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.emailId">Email Id</span></dt>
+        <dd>
+          <span>{{ organization.emailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gstBillsApp.Status.' + organization.status }}">{{ organization.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.dateOfRegestation">Date Of Regestation</span></dt>
+        <dd>
+          <span>{{ organization.dateOfRegestation | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.dateOfDeRegestation">Date Of De Regestation</span></dt>
+        <dd>
+          <span>{{ organization.dateOfDeRegestation | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.logo">Logo</span></dt>
+        <dd>
+          <div *ngIf="organization.logo">
+            <a (click)="openFile(organization.logo, organization.logoContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ organization.logoContentType }}, {{ byteSize(organization.logo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.organization.address">Address</span></dt>
+        <dd>
+          <div *ngIf="organization.address">
+            <a [routerLink]="['/address', organization.address.id, 'view']">{{ organization.address.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/organization', organization.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

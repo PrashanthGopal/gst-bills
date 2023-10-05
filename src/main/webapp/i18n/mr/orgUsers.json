@@ -1,0 +1,35 @@
+{
+  "gstBillsApp": {
+    "orgUsers": {
+      "home": {
+        "title": "Org Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नवीन Org Users तयार करा",
+        "createOrEditLabel": "Org Users तयार किंवा संपादित करा",
+        "notFound": "No Org Users found"
+      },
+      "created": "Org Users [identifier: {{ param }}] तयार आहे",
+      "updated": "Org Users [identifier: {{ param }}] सुधारित केले आहे",
+      "deleted": "Org Users [identifier: {{ param }}] हटविले आहे",
+      "delete": {
+        "question": "Org Users [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+      },
+      "detail": {
+        "title": "Org Users"
+      },
+      "id": "ID",
+      "userId": "User Id",
+      "name": "Name",
+      "userName": "User Name",
+      "password": "Password",
+      "status": "Status",
+      "createDate": "Create Date",
+      "updateDate": "Update Date",
+      "profilePhoto": "Profile Photo",
+      "emailId": "Email Id",
+      "phoneNumber": "Phone Number",
+      "orgUserRole": "Org User Role",
+      "orgUsers": "Org Users"
+    }
+  }
+}

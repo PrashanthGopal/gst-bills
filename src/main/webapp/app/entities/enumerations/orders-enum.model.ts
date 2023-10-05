@@ -1,0 +1,11 @@
+export enum OrdersEnum {
+  DRAFT = 'DRAFT',
+
+  OPEN = 'OPEN',
+
+  IN_PROGRESS = 'IN_PROGRESS',
+
+  CANCEL_CLOSE = 'CANCEL_CLOSE',
+
+  COMPLETED = 'COMPLETED',
+}

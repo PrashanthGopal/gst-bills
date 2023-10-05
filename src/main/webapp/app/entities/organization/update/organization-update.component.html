@@ -1,0 +1,175 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-organization-heading"
+        data-cy="OrganizationCreateUpdateHeading"
+        jhiTranslate="gstBillsApp.organization.home.createOrEditLabel"
+      >
+        Create or edit a Organization
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.orgId" for="field_orgId">Org Id</label>
+          <input type="text" class="form-control" name="orgId" id="field_orgId" data-cy="orgId" formControlName="orgId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.orgName" for="field_orgName">Org Name</label>
+          <input type="text" class="form-control" name="orgName" id="field_orgName" data-cy="orgName" formControlName="orgName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.legalOrgName" for="field_legalOrgName">Legal Org Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="legalOrgName"
+            id="field_legalOrgName"
+            data-cy="legalOrgName"
+            formControlName="legalOrgName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.pan" for="field_pan">Pan</label>
+          <input type="text" class="form-control" name="pan" id="field_pan" data-cy="pan" formControlName="pan" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.gstin" for="field_gstin">Gstin</label>
+          <input type="text" class="form-control" name="gstin" id="field_gstin" data-cy="gstin" formControlName="gstin" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.emailId" for="field_emailId">Email Id</label>
+          <input type="text" class="form-control" name="emailId" id="field_emailId" data-cy="emailId" formControlName="emailId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'gstBillsApp.Status.null' | translate }}</option>
+            <option *ngFor="let status of statusValues" [value]="status">{{ 'gstBillsApp.Status.' + status | translate }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.dateOfRegestation" for="field_dateOfRegestation"
+            >Date Of Regestation</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateOfRegestation"
+              data-cy="dateOfRegestation"
+              type="datetime-local"
+              class="form-control"
+              name="dateOfRegestation"
+              formControlName="dateOfRegestation"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.dateOfDeRegestation" for="field_dateOfDeRegestation"
+            >Date Of De Regestation</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateOfDeRegestation"
+              data-cy="dateOfDeRegestation"
+              type="datetime-local"
+              class="form-control"
+              name="dateOfDeRegestation"
+              formControlName="dateOfDeRegestation"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.logo" for="field_logo">Logo</label>
+          <div>
+            <div *ngIf="editForm.get('logo')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('logo')!.value!, editForm.get('logoContentType')!.value!)"
+                jhiTranslate="entity.action.open"
+                >Open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('logoContentType')!.value }}, {{ byteSize(editForm.get('logo')!.value!) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ logo: undefined, logoContentType: undefined })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_logo"
+              data-cy="logo"
+              (change)="setFileData($event, 'logo', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="logo" id="field_logo" data-cy="logo" formControlName="logo" />
+          <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType" formControlName="logoContentType" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.organization.address" for="field_address">Address</label>
+          <select
+            class="form-control"
+            id="field_address"
+            data-cy="address"
+            name="address"
+            formControlName="address"
+            [compareWith]="compareAddress"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="addressOption" *ngFor="let addressOption of addressesCollection">{{ addressOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

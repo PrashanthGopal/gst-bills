@@ -1,0 +1,31 @@
+{
+  "gstBillsApp": {
+    "orders": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త Orders  సృష్టించండి",
+        "createOrEditLabel": "Orders సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Orders found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Orders సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Orders సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Orders తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Orders {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Orders"
+      },
+      "id": "ID",
+      "orderId": "Order Id",
+      "title": "Title",
+      "description": "Description",
+      "status": "Status",
+      "ordersItemsId": "Orders Items Id",
+      "clients": "Clients",
+      "ordersItems": "Orders Items",
+      "orgOrders": "Org Orders"
+    }
+  }
+}

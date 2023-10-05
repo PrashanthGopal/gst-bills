@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130631",
+  "entityTableName": "state_code",
+  "fields": [
+    {
+      "fieldName": "stateCodeId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "name": "StateCode",
+  "relationships": [
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "stateCode",
+      "relationshipName": "address",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

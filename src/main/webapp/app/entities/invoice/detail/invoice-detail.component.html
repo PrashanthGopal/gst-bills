@@ -1,0 +1,136 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="invoice">
+      <h2 data-cy="invoiceDetailsHeading"><span jhiTranslate="gstBillsApp.invoice.detail.title">Invoice</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ invoice.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.invoiceId">Invoice Id</span></dt>
+        <dd>
+          <span>{{ invoice.invoiceId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.supplierClientId">Supplier Client Id</span></dt>
+        <dd>
+          <span>{{ invoice.supplierClientId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.buyerClientId">Buyer Client Id</span></dt>
+        <dd>
+          <span>{{ invoice.buyerClientId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.invoiceItemsId">Invoice Items Id</span></dt>
+        <dd>
+          <span>{{ invoice.invoiceItemsId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.shippingAddressId">Shipping Address Id</span></dt>
+        <dd>
+          <span>{{ invoice.shippingAddressId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gstBillsApp.InvoiceStatus.' + invoice.status }}">{{ invoice.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.createDateTime">Create Date Time</span></dt>
+        <dd>
+          <span>{{ invoice.createDateTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.updateDateTime">Update Date Time</span></dt>
+        <dd>
+          <span>{{ invoice.updateDateTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ invoice.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ invoice.updatedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.totalIgstRate">Total Igst Rate</span></dt>
+        <dd>
+          <span>{{ invoice.totalIgstRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.totalCgstRate">Total Cgst Rate</span></dt>
+        <dd>
+          <span>{{ invoice.totalCgstRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.totalSgstRate">Total Sgst Rate</span></dt>
+        <dd>
+          <span>{{ invoice.totalSgstRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.totalTaxRate">Total Tax Rate</span></dt>
+        <dd>
+          <span>{{ invoice.totalTaxRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.totalAssAmount">Total Ass Amount</span></dt>
+        <dd>
+          <span>{{ invoice.totalAssAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.totalNoItems">Total No Items</span></dt>
+        <dd>
+          <span>{{ invoice.totalNoItems }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.grandTotal">Grand Total</span></dt>
+        <dd>
+          <span>{{ invoice.grandTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.distance">Distance</span></dt>
+        <dd>
+          <span>{{ invoice.distance }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.modeOfTransaction">Mode Of Transaction</span></dt>
+        <dd>
+          <span>{{ invoice.modeOfTransaction }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.transType">Trans Type</span></dt>
+        <dd>
+          <span>{{ invoice.transType }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.vehicleNo">Vehicle No</span></dt>
+        <dd>
+          <span>{{ invoice.vehicleNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.transporter">Transporter</span></dt>
+        <dd>
+          <div *ngIf="invoice.transporter">
+            <a [routerLink]="['/transporter', invoice.transporter.id, 'view']">{{ invoice.transporter.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.address">Address</span></dt>
+        <dd>
+          <div *ngIf="invoice.address">
+            <a [routerLink]="['/address', invoice.address.id, 'view']">{{ invoice.address.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.orgInvoices">Org Invoices</span></dt>
+        <dd>
+          <div *ngIf="invoice.orgInvoices">
+            <a [routerLink]="['/organization', invoice.orgInvoices.id, 'view']">{{ invoice.orgInvoices.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gstBillsApp.invoice.clients">Clients</span></dt>
+        <dd>
+          <div *ngIf="invoice.clients">
+            <a [routerLink]="['/clients', invoice.clients.id, 'view']">{{ invoice.clients.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/invoice', invoice.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

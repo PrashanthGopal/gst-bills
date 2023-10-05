@@ -1,0 +1,33 @@
+{
+  "gstBillsApp": {
+    "clients": {
+      "home": {
+        "title": "Clients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Clients-ஐ உருவாக்கு",
+        "createOrEditLabel": "Clients -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Clients found"
+      },
+      "created": "Clients புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Clients மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Clients நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Clients {{ id }}?"
+      },
+      "detail": {
+        "title": "Clients"
+      },
+      "id": "ID",
+      "clientId": "Client Id",
+      "name": "Name",
+      "gstin": "Gstin",
+      "status": "Status",
+      "emailId": "Email Id",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "invoice": "Invoice",
+      "orders": "Orders",
+      "orgClients": "Org Clients"
+    }
+  }
+}

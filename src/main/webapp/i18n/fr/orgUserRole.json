@@ -1,0 +1,27 @@
+{
+  "gstBillsApp": {
+    "orgUserRole": {
+      "home": {
+        "title": "OrgUserRoles",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Org User Role",
+        "createOrEditLabel": "Créer ou éditer un Org User Role",
+        "notFound": "Aucun Org User Role trouvé"
+      },
+      "created": "Un nouveau Org User Role a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Org User Role avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Org User Role avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Org User Role {{ id }} ?"
+      },
+      "detail": {
+        "title": "Org User Role"
+      },
+      "id": "ID",
+      "roleId": "Role Id",
+      "orgId": "Org Id",
+      "name": "Name",
+      "userRole": "User Role"
+    }
+  }
+}

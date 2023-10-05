@@ -1,0 +1,12 @@
+{
+  "gstBillsApp": {
+    "InvoiceStatus": {
+      "null": "",
+      "DRAFT": "DRAFT",
+      "ISSUED": "ISSUED",
+      "PAYMENT_NOT_RECEIVED": "PAYMENT_NOT_RECEIVED",
+      "PAYMENT_RECEIVED": "PAYMENT_RECEIVED",
+      "COMPLETED": "COMPLETED"
+    }
+  }
+}

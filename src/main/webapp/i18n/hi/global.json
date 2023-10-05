@@ -7,6 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "एंटिटीज़",
+        "orders": "Orders",
+        "stateCode": "State Code",
+        "invoiceItems": "Invoice Items",
+        "orgUsers": "Org Users",
+        "productUnit": "Product Unit",
+        "address": "Address",
+        "ordersItems": "Orders Items",
+        "clients": "Clients",
+        "organization": "Organization",
+        "products": "Products",
+        "invoice": "Invoice",
+        "orgUserRole": "Org User Role",
+        "transporter": "Transporter",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

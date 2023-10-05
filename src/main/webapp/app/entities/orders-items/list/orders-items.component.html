@@ -1,0 +1,152 @@
+<div>
+  <h2 id="page-heading" data-cy="OrdersItemsHeading">
+    <span jhiTranslate="gstBillsApp.ordersItems.home.title">Orders Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gstBillsApp.ordersItems.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-orders-items"
+        [routerLink]="['/orders-items/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gstBillsApp.ordersItems.home.createLabel"> Create a new Orders Items </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ordersItems?.length === 0">
+    <span jhiTranslate="gstBillsApp.ordersItems.home.notFound">No Orders Items found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="ordersItems && ordersItems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orgId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.orgId">Org Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orderItemsId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.orderItemsId">Order Items Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quantity">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.quantity">Quantity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cgst">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.cgst">Cgst</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sgst">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.sgst">Sgst</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="gst">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.gst">Gst</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalAmount">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.totalAmount">Total Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="products.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.products">Products</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orders.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.ordersItems.orders">Orders</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ordersItems of ordersItems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/orders-items', ordersItems.id, 'view']">{{ ordersItems.id }}</a>
+          </td>
+          <td>{{ ordersItems.orgId }}</td>
+          <td>{{ ordersItems.orderItemsId }}</td>
+          <td>{{ ordersItems.quantity }}</td>
+          <td>{{ ordersItems.cgst }}</td>
+          <td>{{ ordersItems.sgst }}</td>
+          <td>{{ ordersItems.gst }}</td>
+          <td>{{ ordersItems.totalAmount }}</td>
+          <td>
+            <div *ngIf="ordersItems.products">
+              <a [routerLink]="['/products', ordersItems.products.id, 'view']">{{ ordersItems.products.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="ordersItems.orders">
+              <a [routerLink]="['/orders', ordersItems.orders.id, 'view']">{{ ordersItems.orders.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/orders-items', ordersItems.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/orders-items', ordersItems.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ordersItems)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

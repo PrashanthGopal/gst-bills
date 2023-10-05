@@ -1,0 +1,27 @@
+{
+  "gstBillsApp": {
+    "orgUserRole": {
+      "home": {
+        "title": "OrgUserRoles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Org User Role बनाएँ",
+        "createOrEditLabel": "Org User Role बनाएँ या संपादित करें",
+        "notFound": "No Org User Roles found"
+      },
+      "created": "एक नया Org User Role [identifier: {{ param }}] तैयार है",
+      "updated": "एक Org User Role [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Org User Role [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Org User Role [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Org User Role"
+      },
+      "id": "ID",
+      "roleId": "Role Id",
+      "orgId": "Org Id",
+      "name": "Name",
+      "userRole": "User Role"
+    }
+  }
+}

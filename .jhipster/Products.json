@@ -1,0 +1,82 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130639",
+  "entityTableName": "products",
+  "fields": [
+    {
+      "fieldName": "productId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productHsnCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productTaxRate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unitCodeId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "costPerQty",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "cgst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sgst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "igst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalTaxRate",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Products",
+  "relationships": [
+    {
+      "otherEntityName": "productUnit",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "productUnit",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "invoiceItems",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "invoiceItems",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "ordersItems",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "ordersItems",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "relationshipName": "orgProducts",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

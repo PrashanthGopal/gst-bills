@@ -1,0 +1,40 @@
+{
+  "gstBillsApp": {
+    "organization": {
+      "home": {
+        "title": "Organizations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త Organization  సృష్టించండి",
+        "createOrEditLabel": "Organization సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Organizations found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Organization సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Organization సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Organization తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Organization {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Organization"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "orgName": "Org Name",
+      "legalOrgName": "Legal Org Name",
+      "pan": "Pan",
+      "gstin": "Gstin",
+      "phoneNumber": "Phone Number",
+      "emailId": "Email Id",
+      "status": "Status",
+      "dateOfRegestation": "Date Of Regestation",
+      "dateOfDeRegestation": "Date Of De Regestation",
+      "logo": "Logo",
+      "address": "Address",
+      "invoice": "Invoice",
+      "orders": "Orders",
+      "orgUsers": "Org Users",
+      "clients": "Clients",
+      "products": "Products"
+    }
+  }
+}

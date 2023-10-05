@@ -1,0 +1,27 @@
+{
+  "gstBillsApp": {
+    "productUnit": {
+      "home": {
+        "title": "ProductUnits",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Product Unit",
+        "createOrEditLabel": "Créer ou éditer un Product Unit",
+        "notFound": "Aucun Product Unit trouvé"
+      },
+      "created": "Un nouveau Product Unit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Product Unit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Product Unit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Product Unit {{ id }} ?"
+      },
+      "detail": {
+        "title": "Product Unit"
+      },
+      "id": "ID",
+      "unitCodeId": "Unit Code Id",
+      "unitCode": "Unit Code",
+      "unitCodeDescription": "Unit Code Description",
+      "products": "Products"
+    }
+  }
+}

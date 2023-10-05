@@ -1,0 +1,66 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130635",
+  "entityTableName": "address",
+  "fields": [
+    {
+      "fieldName": "orgId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addressId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pincode",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Address",
+  "relationships": [
+    {
+      "otherEntityName": "stateCode",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "stateCode",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "organization",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "clients",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "clients",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "transporter",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "transporter",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "invoice",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

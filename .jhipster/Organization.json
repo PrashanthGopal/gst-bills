@@ -1,0 +1,99 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130638",
+  "entityTableName": "organization",
+  "fields": [
+    {
+      "fieldName": "orgId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orgName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "legalOrgName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pan",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gstin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,INACTIVE"
+    },
+    {
+      "fieldName": "dateOfRegestation",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateOfDeRegestation",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "name": "Organization",
+  "relationships": [
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "address",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "orgInvoices",
+      "relationshipName": "invoice",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "orders",
+      "otherEntityRelationshipName": "orgOrders",
+      "relationshipName": "orders",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "orgUsers",
+      "otherEntityRelationshipName": "orgUsers",
+      "relationshipName": "orgUsers",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "clients",
+      "otherEntityRelationshipName": "orgClients",
+      "relationshipName": "clients",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "orgProducts",
+      "relationshipName": "products",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,33 @@
+{
+  "gstBillsApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త Address  సృష్టించండి",
+        "createOrEditLabel": "Address సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Addresses found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Address సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Address సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Address తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Address {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "addressId": "Address Id",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "pincode": "Pincode",
+      "stateCode": "State Code",
+      "organization": "Organization",
+      "clients": "Clients",
+      "transporter": "Transporter",
+      "invoice": "Invoice"
+    }
+  }
+}

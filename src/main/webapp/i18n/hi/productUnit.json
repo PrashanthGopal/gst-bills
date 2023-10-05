@@ -1,0 +1,27 @@
+{
+  "gstBillsApp": {
+    "productUnit": {
+      "home": {
+        "title": "ProductUnits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Product Unit बनाएँ",
+        "createOrEditLabel": "Product Unit बनाएँ या संपादित करें",
+        "notFound": "No Product Units found"
+      },
+      "created": "एक नया Product Unit [identifier: {{ param }}] तैयार है",
+      "updated": "एक Product Unit [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Product Unit [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Product Unit [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Product Unit"
+      },
+      "id": "ID",
+      "unitCodeId": "Unit Code Id",
+      "unitCode": "Unit Code",
+      "unitCodeDescription": "Unit Code Description",
+      "products": "Products"
+    }
+  }
+}

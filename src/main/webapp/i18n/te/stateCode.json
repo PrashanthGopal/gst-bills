@@ -1,0 +1,27 @@
+{
+  "gstBillsApp": {
+    "stateCode": {
+      "home": {
+        "title": "State Codes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త State Code  సృష్టించండి",
+        "createOrEditLabel": "State Code సృష్టించండి లేదా సవరించండి",
+        "notFound": "No State Codes found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త State Code సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త State Code సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త State Code తొలగించబడినది",
+      "delete": {
+        "question": "మీరు State Code {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "State Code"
+      },
+      "id": "ID",
+      "stateCodeId": "State Code Id",
+      "code": "Code",
+      "name": "Name",
+      "address": "Address"
+    }
+  }
+}

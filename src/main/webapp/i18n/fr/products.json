@@ -1,0 +1,38 @@
+{
+  "gstBillsApp": {
+    "products": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Products",
+        "createOrEditLabel": "Créer ou éditer un Products",
+        "notFound": "Aucun Products trouvé"
+      },
+      "created": "Un nouveau Products a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Products avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Products avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Products {{ id }} ?"
+      },
+      "detail": {
+        "title": "Products"
+      },
+      "id": "ID",
+      "productId": "Product Id",
+      "name": "Name",
+      "description": "Description",
+      "productHsnCode": "Product Hsn Code",
+      "productTaxRate": "Product Tax Rate",
+      "unitCodeId": "Unit Code Id",
+      "costPerQty": "Cost Per Qty",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "igst": "Igst",
+      "totalTaxRate": "Total Tax Rate",
+      "productUnit": "Product Unit",
+      "invoiceItems": "Invoice Items",
+      "ordersItems": "Orders Items",
+      "orgProducts": "Org Products"
+    }
+  }
+}

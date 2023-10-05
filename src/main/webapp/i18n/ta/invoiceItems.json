@@ -1,0 +1,32 @@
+{
+  "gstBillsApp": {
+    "invoiceItems": {
+      "home": {
+        "title": "Invoice Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Invoice Items-ஐ உருவாக்கு",
+        "createOrEditLabel": "Invoice Items -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Invoice Items found"
+      },
+      "created": "Invoice Items புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Invoice Items மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Invoice Items நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Invoice Items {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice Items"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "invoiceItemsId": "Invoice Items Id",
+      "quantity": "Quantity",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "gst": "Gst",
+      "totalAmount": "Total Amount",
+      "products": "Products",
+      "invoice": "Invoice"
+    }
+  }
+}

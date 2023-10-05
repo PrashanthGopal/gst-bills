@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130630",
+  "entityTableName": "orders",
+  "fields": [
+    {
+      "fieldName": "orderId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrdersEnum",
+      "fieldValues": "DRAFT,OPEN,IN_PROGRESS,CANCEL_CLOSE,COMPLETED"
+    },
+    {
+      "fieldName": "ordersItemsId",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Orders",
+  "relationships": [
+    {
+      "otherEntityName": "clients",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "clients",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "ordersItems",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "ordersItems",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organization",
+      "relationshipName": "orgOrders",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

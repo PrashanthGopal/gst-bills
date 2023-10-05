@@ -1,0 +1,177 @@
+<div>
+  <h2 id="page-heading" data-cy="OrganizationHeading">
+    <span jhiTranslate="gstBillsApp.organization.home.title">Organizations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gstBillsApp.organization.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-organization"
+        [routerLink]="['/organization/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gstBillsApp.organization.home.createLabel"> Create a new Organization </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="organizations?.length === 0">
+    <span jhiTranslate="gstBillsApp.organization.home.notFound">No Organizations found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="organizations && organizations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orgId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.orgId">Org Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="orgName">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.orgName">Org Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="legalOrgName">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.legalOrgName">Legal Org Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pan">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.pan">Pan</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="gstin">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.gstin">Gstin</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phoneNumber">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="emailId">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.emailId">Email Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateOfRegestation">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.dateOfRegestation">Date Of Regestation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateOfDeRegestation">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.dateOfDeRegestation">Date Of De Regestation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="logo">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.logo">Logo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="address.id">
+            <div class="d-flex">
+              <span jhiTranslate="gstBillsApp.organization.address">Address</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let organization of organizations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/organization', organization.id, 'view']">{{ organization.id }}</a>
+          </td>
+          <td>{{ organization.orgId }}</td>
+          <td>{{ organization.orgName }}</td>
+          <td>{{ organization.legalOrgName }}</td>
+          <td>{{ organization.pan }}</td>
+          <td>{{ organization.gstin }}</td>
+          <td>{{ organization.phoneNumber }}</td>
+          <td>{{ organization.emailId }}</td>
+          <td jhiTranslate="{{ 'gstBillsApp.Status.' + organization.status }}">{{ organization.status }}</td>
+          <td>{{ organization.dateOfRegestation | formatMediumDatetime }}</td>
+          <td>{{ organization.dateOfDeRegestation | formatMediumDatetime }}</td>
+          <td>
+            <a
+              *ngIf="organization.logo"
+              (click)="openFile(organization.logo, organization.logoContentType)"
+              jhiTranslate="entity.action.open"
+              >Open</a
+            >
+            <span *ngIf="organization.logo">{{ organization.logoContentType }}, {{ byteSize(organization.logo) }}</span>
+          </td>
+          <td>
+            <div *ngIf="organization.address">
+              <a [routerLink]="['/address', organization.address.id, 'view']">{{ organization.address.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/organization', organization.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/organization', organization.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(organization)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20231005130636",
+  "entityTableName": "orders_items",
+  "fields": [
+    {
+      "fieldName": "orgId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orderItemsId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cgst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sgst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gst",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "OrdersItems",
+  "relationships": [
+    {
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "ordersItems",
+      "relationshipName": "products",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "orders",
+      "relationshipName": "orders",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

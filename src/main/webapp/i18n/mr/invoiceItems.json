@@ -1,0 +1,32 @@
+{
+  "gstBillsApp": {
+    "invoiceItems": {
+      "home": {
+        "title": "Invoice Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नवीन Invoice Items तयार करा",
+        "createOrEditLabel": "Invoice Items तयार किंवा संपादित करा",
+        "notFound": "No Invoice Items found"
+      },
+      "created": "Invoice Items [identifier: {{ param }}] तयार आहे",
+      "updated": "Invoice Items [identifier: {{ param }}] सुधारित केले आहे",
+      "deleted": "Invoice Items [identifier: {{ param }}] हटविले आहे",
+      "delete": {
+        "question": "Invoice Items [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+      },
+      "detail": {
+        "title": "Invoice Items"
+      },
+      "id": "ID",
+      "orgId": "Org Id",
+      "invoiceItemsId": "Invoice Items Id",
+      "quantity": "Quantity",
+      "cgst": "Cgst",
+      "sgst": "Sgst",
+      "gst": "Gst",
+      "totalAmount": "Total Amount",
+      "products": "Products",
+      "invoice": "Invoice"
+    }
+  }
+}
