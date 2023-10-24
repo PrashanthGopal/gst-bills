@@ -153,13 +153,13 @@ public class StateCodeResource {
      */
     @GetMapping("/state-codes")
     public List<StateCode> getAllStateCodes(@RequestParam(required = false) String filter) {
-        if ("address-is-null".equals(filter)) {
-            log.debug("REST request to get all StateCodes where address is null");
-            return StreamSupport
-                .stream(stateCodeRepository.findAll().spliterator(), false)
-                .filter(stateCode -> stateCode.getAddress() == null)
-                .toList();
-        }
+//        if ("address-is-null".equals(filter)) {
+//            log.debug("REST request to get all StateCodes where address is null");
+//            return StreamSupport
+//                .stream(stateCodeRepository.findAll().spliterator(), false)
+//                .filter(stateCode -> stateCode.getAddress() == null)
+//                .toList();
+//        }
         log.debug("REST request to get all StateCodes");
         return stateCodeRepository.findAll();
     }

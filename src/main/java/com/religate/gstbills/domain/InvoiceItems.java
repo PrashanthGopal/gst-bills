@@ -46,10 +46,6 @@ public class InvoiceItems implements Serializable {
     @JoinColumn(unique = true)
     private Products products;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "transporter", "address", "invoiceItems", "orgInvoices", "clients" }, allowSetters = true)
-    private Invoice invoice;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -166,19 +162,6 @@ public class InvoiceItems implements Serializable {
 
     public InvoiceItems products(Products products) {
         this.setProducts(products);
-        return this;
-    }
-
-    public Invoice getInvoice() {
-        return this.invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    public InvoiceItems invoice(Invoice invoice) {
-        this.setInvoice(invoice);
         return this;
     }
 

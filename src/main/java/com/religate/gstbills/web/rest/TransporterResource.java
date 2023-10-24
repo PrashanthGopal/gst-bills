@@ -159,13 +159,13 @@ public class TransporterResource {
      */
     @GetMapping("/transporters")
     public List<Transporter> getAllTransporters(@RequestParam(required = false) String filter) {
-        if ("invoice-is-null".equals(filter)) {
-            log.debug("REST request to get all Transporters where invoice is null");
-            return StreamSupport
-                .stream(transporterRepository.findAll().spliterator(), false)
-                .filter(transporter -> transporter.getInvoice() == null)
-                .toList();
-        }
+//        if ("invoice-is-null".equals(filter)) {
+//            log.debug("REST request to get all Transporters where invoice is null");
+//            return StreamSupport
+//                .stream(transporterRepository.findAll().spliterator(), false)
+//                .filter(transporter -> transporter.getInvoice() == null)
+//                .toList();
+//        }
         log.debug("REST request to get all Transporters");
         return transporterRepository.findAll();
     }

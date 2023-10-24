@@ -29,10 +29,6 @@ public class StateCode implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties(value = { "stateCode", "organization", "clients", "transporter", "invoice" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "stateCode")
-    private Address address;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -85,25 +81,6 @@ public class StateCode implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Address getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(Address address) {
-        if (this.address != null) {
-            this.address.setStateCode(null);
-        }
-        if (address != null) {
-            address.setStateCode(this);
-        }
-        this.address = address;
-    }
-
-    public StateCode address(Address address) {
-        this.setAddress(address);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

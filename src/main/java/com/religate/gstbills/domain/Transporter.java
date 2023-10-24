@@ -37,15 +37,6 @@ public class Transporter implements Serializable {
     @Column(name = "status")
     private Status status;
 
-    @JsonIgnoreProperties(value = { "stateCode", "organization", "clients", "transporter", "invoice" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private Address address;
-
-    @JsonIgnoreProperties(value = { "transporter", "address", "invoiceItems", "orgInvoices", "clients" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "transporter")
-    private Invoice invoice;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -124,38 +115,6 @@ public class Transporter implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public Address getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Transporter address(Address address) {
-        this.setAddress(address);
-        return this;
-    }
-
-    public Invoice getInvoice() {
-        return this.invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        if (this.invoice != null) {
-            this.invoice.setTransporter(null);
-        }
-        if (invoice != null) {
-            invoice.setTransporter(this);
-        }
-        this.invoice = invoice;
-    }
-
-    public Transporter invoice(Invoice invoice) {
-        this.setInvoice(invoice);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

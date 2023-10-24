@@ -17,18 +17,6 @@
             <column name="invoice_id" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="supplier_client_id" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="buyer_client_id" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="invoice_items_id" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="shipping_address_id" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

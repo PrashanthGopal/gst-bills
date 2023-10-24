@@ -124,18 +124,6 @@ public class InvoiceResource {
                 if (invoice.getInvoiceId() != null) {
                     existingInvoice.setInvoiceId(invoice.getInvoiceId());
                 }
-                if (invoice.getSupplierClientId() != null) {
-                    existingInvoice.setSupplierClientId(invoice.getSupplierClientId());
-                }
-                if (invoice.getBuyerClientId() != null) {
-                    existingInvoice.setBuyerClientId(invoice.getBuyerClientId());
-                }
-                if (invoice.getInvoiceItemsId() != null) {
-                    existingInvoice.setInvoiceItemsId(invoice.getInvoiceItemsId());
-                }
-                if (invoice.getShippingAddressId() != null) {
-                    existingInvoice.setShippingAddressId(invoice.getShippingAddressId());
-                }
                 if (invoice.getStatus() != null) {
                     existingInvoice.setStatus(invoice.getStatus());
                 }

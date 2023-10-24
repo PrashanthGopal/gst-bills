@@ -20,9 +20,6 @@ public class Address implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "org_id")
-    private String orgId;
-
     @Column(name = "address_id")
     private String addressId;
 
@@ -35,28 +32,17 @@ public class Address implements Serializable {
     @Column(name = "pincode")
     private String pincode;
 
-    @JsonIgnoreProperties(value = { "address" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private StateCode stateCode;
+    @Column(name = "state")
+    private String state;
 
-    @JsonIgnoreProperties(value = { "address", "invoices", "orders", "orgUsers", "clients", "products" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
-    private Organization organization;
+    public String getState() {
+        return state;
+    }
 
-    @JsonIgnoreProperties(value = { "address", "invoices", "orders", "orgClients" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
-    private Clients clients;
-
-    @JsonIgnoreProperties(value = { "address", "invoice" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
-    private Transporter transporter;
-
-    @JsonIgnoreProperties(value = { "transporter", "address", "invoiceItems", "orgInvoices", "clients" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
-    private Invoice invoice;
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    public void setState(String state) {
+        this.state = state;
+    }
+// jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;
@@ -71,18 +57,6 @@ public class Address implements Serializable {
         this.id = id;
     }
 
-    public String getOrgId() {
-        return this.orgId;
-    }
-
-    public Address orgId(String orgId) {
-        this.setOrgId(orgId);
-        return this;
-    }
-
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
-    }
 
     public String getAddressId() {
         return this.addressId;
@@ -136,95 +110,6 @@ public class Address implements Serializable {
         this.pincode = pincode;
     }
 
-    public StateCode getStateCode() {
-        return this.stateCode;
-    }
-
-    public void setStateCode(StateCode stateCode) {
-        this.stateCode = stateCode;
-    }
-
-    public Address stateCode(StateCode stateCode) {
-        this.setStateCode(stateCode);
-        return this;
-    }
-
-    public Organization getOrganization() {
-        return this.organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        if (this.organization != null) {
-            this.organization.setAddress(null);
-        }
-        if (organization != null) {
-            organization.setAddress(this);
-        }
-        this.organization = organization;
-    }
-
-    public Address organization(Organization organization) {
-        this.setOrganization(organization);
-        return this;
-    }
-
-    public Clients getClients() {
-        return this.clients;
-    }
-
-    public void setClients(Clients clients) {
-        if (this.clients != null) {
-            this.clients.setAddress(null);
-        }
-        if (clients != null) {
-            clients.setAddress(this);
-        }
-        this.clients = clients;
-    }
-
-    public Address clients(Clients clients) {
-        this.setClients(clients);
-        return this;
-    }
-
-    public Transporter getTransporter() {
-        return this.transporter;
-    }
-
-    public void setTransporter(Transporter transporter) {
-        if (this.transporter != null) {
-            this.transporter.setAddress(null);
-        }
-        if (transporter != null) {
-            transporter.setAddress(this);
-        }
-        this.transporter = transporter;
-    }
-
-    public Address transporter(Transporter transporter) {
-        this.setTransporter(transporter);
-        return this;
-    }
-
-    public Invoice getInvoice() {
-        return this.invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        if (this.invoice != null) {
-            this.invoice.setAddress(null);
-        }
-        if (invoice != null) {
-            invoice.setAddress(this);
-        }
-        this.invoice = invoice;
-    }
-
-    public Address invoice(Invoice invoice) {
-        this.setInvoice(invoice);
-        return this;
-    }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -249,11 +134,12 @@ public class Address implements Serializable {
     public String toString() {
         return "Address{" +
             "id=" + getId() +
-            ", orgId='" + getOrgId() + "'" +
+
             ", addressId='" + getAddressId() + "'" +
             ", address1='" + getAddress1() + "'" +
             ", address2='" + getAddress2() + "'" +
             ", pincode='" + getPincode() + "'" +
+            ", state='" + getState() + "'" +
             "}";
     }
 }

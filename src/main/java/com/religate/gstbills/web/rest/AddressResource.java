@@ -123,9 +123,6 @@ public class AddressResource {
         Optional<Address> result = addressRepository
             .findById(address.getId())
             .map(existingAddress -> {
-                if (address.getOrgId() != null) {
-                    existingAddress.setOrgId(address.getOrgId());
-                }
                 if (address.getAddressId() != null) {
                     existingAddress.setAddressId(address.getAddressId());
                 }
@@ -157,7 +154,7 @@ public class AddressResource {
      */
     @GetMapping("/addresses")
     public List<Address> getAllAddresses(@RequestParam(required = false) String filter) {
-        if ("organization-is-null".equals(filter)) {
+        /*if ("organization-is-null".equals(filter)) {
             log.debug("REST request to get all Addresss where organization is null");
             return StreamSupport
                 .stream(addressRepository.findAll().spliterator(), false)
@@ -187,7 +184,7 @@ public class AddressResource {
                 .stream(addressRepository.findAll().spliterator(), false)
                 .filter(address -> address.getInvoice() == null)
                 .toList();
-        }
+        }*/
         log.debug("REST request to get all Addresses");
         return addressRepository.findAll();
     }

@@ -27,18 +27,6 @@ public class Invoice implements Serializable {
     @Column(name = "invoice_id")
     private String invoiceId;
 
-    @Column(name = "supplier_client_id")
-    private String supplierClientId;
-
-    @Column(name = "buyer_client_id")
-    private String buyerClientId;
-
-    @Column(name = "invoice_items_id")
-    private String invoiceItemsId;
-
-    @Column(name = "shipping_address_id")
-    private String shippingAddressId;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private InvoiceStatus status;
@@ -88,7 +76,6 @@ public class Invoice implements Serializable {
     @Column(name = "vehicle_no")
     private String vehicleNo;
 
-    @JsonIgnoreProperties(value = { "address", "invoice" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private Transporter transporter;
@@ -98,8 +85,9 @@ public class Invoice implements Serializable {
     @JoinColumn(unique = true)
     private Address address;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "invoice")
+    @OneToMany(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "products", "invoice" }, allowSetters = true)
+    @JoinColumn(unique = true)
     private Set<InvoiceItems> invoiceItems = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -136,58 +124,6 @@ public class Invoice implements Serializable {
 
     public void setInvoiceId(String invoiceId) {
         this.invoiceId = invoiceId;
-    }
-
-    public String getSupplierClientId() {
-        return this.supplierClientId;
-    }
-
-    public Invoice supplierClientId(String supplierClientId) {
-        this.setSupplierClientId(supplierClientId);
-        return this;
-    }
-
-    public void setSupplierClientId(String supplierClientId) {
-        this.supplierClientId = supplierClientId;
-    }
-
-    public String getBuyerClientId() {
-        return this.buyerClientId;
-    }
-
-    public Invoice buyerClientId(String buyerClientId) {
-        this.setBuyerClientId(buyerClientId);
-        return this;
-    }
-
-    public void setBuyerClientId(String buyerClientId) {
-        this.buyerClientId = buyerClientId;
-    }
-
-    public String getInvoiceItemsId() {
-        return this.invoiceItemsId;
-    }
-
-    public Invoice invoiceItemsId(String invoiceItemsId) {
-        this.setInvoiceItemsId(invoiceItemsId);
-        return this;
-    }
-
-    public void setInvoiceItemsId(String invoiceItemsId) {
-        this.invoiceItemsId = invoiceItemsId;
-    }
-
-    public String getShippingAddressId() {
-        return this.shippingAddressId;
-    }
-
-    public Invoice shippingAddressId(String shippingAddressId) {
-        this.setShippingAddressId(shippingAddressId);
-        return this;
-    }
-
-    public void setShippingAddressId(String shippingAddressId) {
-        this.shippingAddressId = shippingAddressId;
     }
 
     public InvoiceStatus getStatus() {
@@ -429,12 +365,6 @@ public class Invoice implements Serializable {
     }
 
     public void setInvoiceItems(Set<InvoiceItems> invoiceItems) {
-        if (this.invoiceItems != null) {
-            this.invoiceItems.forEach(i -> i.setInvoice(null));
-        }
-        if (invoiceItems != null) {
-            invoiceItems.forEach(i -> i.setInvoice(this));
-        }
         this.invoiceItems = invoiceItems;
     }
 
@@ -445,13 +375,11 @@ public class Invoice implements Serializable {
 
     public Invoice addInvoiceItems(InvoiceItems invoiceItems) {
         this.invoiceItems.add(invoiceItems);
-        invoiceItems.setInvoice(this);
         return this;
     }
 
     public Invoice removeInvoiceItems(InvoiceItems invoiceItems) {
         this.invoiceItems.remove(invoiceItems);
-        invoiceItems.setInvoice(null);
         return this;
     }
 
@@ -506,10 +434,6 @@ public class Invoice implements Serializable {
         return "Invoice{" +
             "id=" + getId() +
             ", invoiceId='" + getInvoiceId() + "'" +
-            ", supplierClientId='" + getSupplierClientId() + "'" +
-            ", buyerClientId='" + getBuyerClientId() + "'" +
-            ", invoiceItemsId='" + getInvoiceItemsId() + "'" +
-            ", shippingAddressId='" + getShippingAddressId() + "'" +
             ", status='" + getStatus() + "'" +
             ", createDateTime='" + getCreateDateTime() + "'" +
             ", updateDateTime='" + getUpdateDateTime() + "'" +
