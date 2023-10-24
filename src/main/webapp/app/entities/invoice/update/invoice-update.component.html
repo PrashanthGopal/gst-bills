@@ -16,58 +16,7 @@
         <div class="mb-3">
           <label class="form-label" jhiTranslate="gstBillsApp.invoice.invoiceId" for="field_invoiceId">Invoice Id</label>
           <input type="text" class="form-control" name="invoiceId" id="field_invoiceId" data-cy="invoiceId" formControlName="invoiceId" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.supplierClientId" for="field_supplierClientId"
-            >Supplier Client Id</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="supplierClientId"
-            id="field_supplierClientId"
-            data-cy="supplierClientId"
-            formControlName="supplierClientId"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.buyerClientId" for="field_buyerClientId">Buyer Client Id</label>
-          <input
-            type="text"
-            class="form-control"
-            name="buyerClientId"
-            id="field_buyerClientId"
-            data-cy="buyerClientId"
-            formControlName="buyerClientId"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.invoiceItemsId" for="field_invoiceItemsId">Invoice Items Id</label>
-          <input
-            type="text"
-            class="form-control"
-            name="invoiceItemsId"
-            id="field_invoiceItemsId"
-            data-cy="invoiceItemsId"
-            formControlName="invoiceItemsId"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.shippingAddressId" for="field_shippingAddressId"
-            >Shipping Address Id</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="shippingAddressId"
-            id="field_shippingAddressId"
-            data-cy="shippingAddressId"
-            formControlName="shippingAddressId"
-          />
+          
         </div>
 
         <div class="mb-3">
@@ -78,46 +27,6 @@
               {{ 'gstBillsApp.InvoiceStatus.' + invoiceStatus | translate }}
             </option>
           </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.createDateTime" for="field_createDateTime">Create Date Time</label>
-          <div class="d-flex">
-            <input
-              id="field_createDateTime"
-              data-cy="createDateTime"
-              type="datetime-local"
-              class="form-control"
-              name="createDateTime"
-              formControlName="createDateTime"
-              placeholder="YYYY-MM-DD HH:mm"
-            />
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.updateDateTime" for="field_updateDateTime">Update Date Time</label>
-          <div class="d-flex">
-            <input
-              id="field_updateDateTime"
-              data-cy="updateDateTime"
-              type="datetime-local"
-              class="form-control"
-              name="updateDateTime"
-              formControlName="updateDateTime"
-              placeholder="YYYY-MM-DD HH:mm"
-            />
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.createdBy" for="field_createdBy">Created By</label>
-          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="gstBillsApp.invoice.updatedBy" for="field_updatedBy">Updated By</label>
-          <input type="text" class="form-control" name="updatedBy" id="field_updatedBy" data-cy="updatedBy" formControlName="updatedBy" />
         </div>
 
         <div class="mb-3">
@@ -296,6 +205,37 @@
             <option [ngValue]="clientsOption" *ngFor="let clientsOption of clientsSharedCollection">{{ clientsOption.id }}</option>
           </select>
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.invoice.createDateTime" for="field_createDateTime">Create Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_createDateTime"
+              data-cy="createDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="createDateTime"
+              formControlName="createDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gstBillsApp.invoice.updateDateTime" for="field_updateDateTime">Update Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_updateDateTime"
+              data-cy="updateDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="updateDateTime"
+              formControlName="updateDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
       </div>
 
       <div>

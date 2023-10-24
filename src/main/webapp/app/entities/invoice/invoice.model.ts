@@ -8,10 +8,6 @@ import { InvoiceStatus } from 'app/entities/enumerations/invoice-status.model';
 export interface IInvoice {
   id: number;
   invoiceId?: string | null;
-  supplierClientId?: string | null;
-  buyerClientId?: string | null;
-  invoiceItemsId?: string | null;
-  shippingAddressId?: string | null;
   status?: keyof typeof InvoiceStatus | null;
   createDateTime?: dayjs.Dayjs | null;
   updateDateTime?: dayjs.Dayjs | null;

@@ -44,30 +44,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="supplierClientId">
-            <div class="d-flex">
-              <span jhiTranslate="gstBillsApp.invoice.supplierClientId">Supplier Client Id</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="buyerClientId">
-            <div class="d-flex">
-              <span jhiTranslate="gstBillsApp.invoice.buyerClientId">Buyer Client Id</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="invoiceItemsId">
-            <div class="d-flex">
-              <span jhiTranslate="gstBillsApp.invoice.invoiceItemsId">Invoice Items Id</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="shippingAddressId">
-            <div class="d-flex">
-              <span jhiTranslate="gstBillsApp.invoice.shippingAddressId">Shipping Address Id</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="status">
             <div class="d-flex">
               <span jhiTranslate="gstBillsApp.invoice.status">Status</span>
@@ -197,10 +173,6 @@
             <a [routerLink]="['/invoice', invoice.id, 'view']">{{ invoice.id }}</a>
           </td>
           <td>{{ invoice.invoiceId }}</td>
-          <td>{{ invoice.supplierClientId }}</td>
-          <td>{{ invoice.buyerClientId }}</td>
-          <td>{{ invoice.invoiceItemsId }}</td>
-          <td>{{ invoice.shippingAddressId }}</td>
           <td jhiTranslate="{{ 'gstBillsApp.InvoiceStatus.' + invoice.status }}">{{ invoice.status }}</td>
           <td>{{ invoice.createDateTime | formatMediumDatetime }}</td>
           <td>{{ invoice.updateDateTime | formatMediumDatetime }}</td>

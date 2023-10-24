@@ -33,10 +33,6 @@ type InvoiceFormDefaults = Pick<NewInvoice, 'id' | 'createDateTime' | 'updateDat
 type InvoiceFormGroupContent = {
   id: FormControl<InvoiceFormRawValue['id'] | NewInvoice['id']>;
   invoiceId: FormControl<InvoiceFormRawValue['invoiceId']>;
-  supplierClientId: FormControl<InvoiceFormRawValue['supplierClientId']>;
-  buyerClientId: FormControl<InvoiceFormRawValue['buyerClientId']>;
-  invoiceItemsId: FormControl<InvoiceFormRawValue['invoiceItemsId']>;
-  shippingAddressId: FormControl<InvoiceFormRawValue['shippingAddressId']>;
   status: FormControl<InvoiceFormRawValue['status']>;
   createDateTime: FormControl<InvoiceFormRawValue['createDateTime']>;
   updateDateTime: FormControl<InvoiceFormRawValue['updateDateTime']>;
@@ -77,10 +73,6 @@ export class InvoiceFormService {
         }
       ),
       invoiceId: new FormControl(invoiceRawValue.invoiceId),
-      supplierClientId: new FormControl(invoiceRawValue.supplierClientId),
-      buyerClientId: new FormControl(invoiceRawValue.buyerClientId),
-      invoiceItemsId: new FormControl(invoiceRawValue.invoiceItemsId),
-      shippingAddressId: new FormControl(invoiceRawValue.shippingAddressId),
       status: new FormControl(invoiceRawValue.status),
       createDateTime: new FormControl(invoiceRawValue.createDateTime),
       updateDateTime: new FormControl(invoiceRawValue.updateDateTime),
